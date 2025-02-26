@@ -1,31 +1,53 @@
----
-title: Set up your environment
-description: Learn how to set up your development environment to start building with Expo.
-hideTOC: true
----
+// Basic project structure for your app
 
-import { DevelopmentEnvironmentInstructions } from '~/scenes/get-started/set-up-your-environment/DevelopmentEnvironmentInstructions';
-import { DevelopmentModeForm } from '~/scenes/get-started/set-up-your-environment/DevelopmentModeForm';
-import { PlatformAndDeviceForm } from '~/scenes/get-started/set-up-your-environment/PlatformAndDeviceForm';
+// 1. Frontend (React.js for Web, React Native for Mobile)
+// 2. Backend (Node.js + Express)
+// 3. Database (PostgreSQL, Firebase for real-time features)
 
-Let's set up a local development environment for running your project on Android and iOS.
+// Frontend Setup (React.js - Web)
+// Run: npx create-react-app web-app
+// Folder Structure:
+// web-app/
+// ├── src/
+// │   ├── components/
+// │   ├── pages/
+// │   ├── services/
+// │   ├── App.js
+// │   ├── index.js
 
-## Where would you like to develop?
+// Frontend Setup (React Native - Mobile)
+// Run: npx react-native init mobile-app
+// Folder Structure:
+// mobile-app/
+// ├── src/
+// │   ├── components/
+// │   ├── screens/
+// │   ├── services/
+// │   ├── App.js
 
-We recommend using a real device to develop, since you'll get to see exactly what your users will see.
+// Backend Setup (Node.js + Express)
+// Run: mkdir backend && cd backend && npm init -y
+// Install: npm install express cors dotenv pg
+// Folder Structure:
+// backend/
+// ├── server.js
+// ├── routes/
+// ├── controllers/
+// ├── models/
 
-<PlatformAndDeviceForm />
+// Sample Express Server (server.js)
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-## How would you like to develop?
+app.use(cors());
+app.use(express.json());
 
-Expo Go is a sandbox for trying out Expo quickly. A development build is a build of your own app that includes Expo's developer tools.
+app.get('/', (req, res) => {
+    res.send('Server is running');
+});
 
-<DevelopmentModeForm />
-
----
-
-<DevelopmentEnvironmentInstructions />
-
-## Next step
-
-You have a project and a development environment. Now it's time to start developing.
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
